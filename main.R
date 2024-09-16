@@ -44,7 +44,7 @@ less_than_zero <- function(x) {
 #' [2,]  TRUE FALSE FALSE
 #' [3,] FALSE FALSE FALSE
 is_between <- function(x, a, b) {
-  return(NULL)
+  return(x > a & x < b)
 }
 
 #' Return the values of the input vector that are not NA
@@ -61,9 +61,9 @@ is_between <- function(x, a, b) {
 #' rm_na(x)
 #' [1] 1 2 3
 rm_na <- function(x) {
-  return(NULL)
+  new_x <- x[!is.na(x)]
+  return(new_x)
 }
-
 #' Calculate the median of each row of a matrix
 #'
 #' Given the matrix x with n rows and m columns, return a numeric vector of
