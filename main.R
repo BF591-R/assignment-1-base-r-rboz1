@@ -145,7 +145,13 @@ summarize_rows <- function(x, fn, na.rm=FALSE) {
 #' 3 -0.09040182 1.027559 -0.02774705 -3.026888 2.353087      130              54      0
 #' 4  0.09518138 1.030461  0.11294781 -3.409049 2.544992       90              72      0
 summarize_matrix <- function(x, na.rm=FALSE) {
-  return(NULL)
+  df <- data.frame('mean' = summarize_rows(x, mean),
+                   'stdev' = summarize_rows(x, sd),
+                   'median' = summarize_rows(x, median),
+                   'min' = summarize_rows(x, min),
+                   'max' = summarize_rows(x, max),
+                   'num_lt_0' = summarize_rows(x, less_than_zero))
+  return(df)
 }
 
 # ------------ Helper Functions Used By Assignment, You May Ignore ------------
@@ -181,3 +187,4 @@ simulate_gene_expression_w_missing <- function(num_samples, num_genes, missing_f
   gene_exp[missing] <- NA
   return(gene_exp)
 }
+
