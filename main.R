@@ -150,7 +150,10 @@ summarize_matrix <- function(x, na.rm=FALSE) {
                    'median' = summarize_rows(x, median),
                    'min' = summarize_rows(x, min),
                    'max' = summarize_rows(x, max),
-                   'num_lt_0' = summarize_rows(x, less_than_zero))
+                   'num_lt_0' = sum(summarize_rows(x, less_than_zero)),
+                   'num_btw_1_and_5' = summarize_rows(x,function(row) sum(is_between(row, 1, 5))),
+                   'num_na' = summarize_rows(x,function(row) sum(is.na(row)))
+  )
   return(df)
 }
 
